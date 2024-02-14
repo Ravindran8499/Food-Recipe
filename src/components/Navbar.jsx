@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import { GlobalContext } from "../context/context";
 
 const Navbar = () => {
-  const { searchParams, setSearchParams } = useContext(GlobalContext);
+  const { searchParams, setSearchParams, handleSubmit } =
+    useContext(GlobalContext);
 
   const handleInput = (e) => {
     setSearchParams(e.target.value);
@@ -14,7 +15,7 @@ const Navbar = () => {
   return (
     <nav className="px-5 flex justify-between items-center py-8  mx-auto flex-col lg:flex-row gap-5 lg:gap-0">
       <NavLink to={"/"}>Food Recepie</NavLink>
-      <form className="flex gap-3">
+      <form className="flex gap-3" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Search here..."
@@ -23,7 +24,7 @@ const Navbar = () => {
           onChange={handleInput}
           value={searchParams}
         />
-        <button type="button">Search</button>
+        <button type="submit">Search</button>
       </form>
       <ul className="flex flex-row gap-8">
         <li>
