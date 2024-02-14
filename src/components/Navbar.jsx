@@ -24,7 +24,9 @@ const Navbar = () => {
           onChange={handleInput}
           value={searchParams}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="px-2">
+          Search
+        </button>
       </form>
       <ul className="flex flex-row gap-8">
         <li>
