@@ -4,9 +4,9 @@ import { GlobalContext } from "../context/context";
 
 const Home = () => {
   const { loading, recipeList } = useContext(GlobalContext);
-
+  const s = "grid grid-cols-4 gap-10";
   return (
-    <div className="grid grid-cols-4 gap-10 auto-cols-max">
+    <div className="grid grid-cols-4 gap-10">
       {recipeList.map((recipeItem) => {
         return (
           <RecipeItem
