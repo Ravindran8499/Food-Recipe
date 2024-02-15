@@ -7,6 +7,7 @@ const GlobalState = ({ children }) => {
   const [recipeList, setRecipeList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [recipeDetails, setRecipeDetails] = useState(null);
+  const [ingredients, setIngredients] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,6 +40,8 @@ const GlobalState = ({ children }) => {
         recipeList,
         recipeDetails,
         setRecipeDetails,
+        ingredients,
+        setIngredients,
       }}
     >
       {children}
