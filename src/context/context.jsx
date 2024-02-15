@@ -18,13 +18,12 @@ const GlobalState = ({ children }) => {
       const res = await fetch(
         `https://forkify-api.herokuapp.com/api/v2/recipes?search=${searchParams}&key=0945168f-80e2-43af-934e-e0d50958b7c3`
       );
+      setLoading(true);
       const parsedData = await res.json();
 
-      // console.log("Parsed data", parsedData.data.recipes);
-
       setRecipeList(parsedData.data.recipes);
-      setLoading(false);
       setSearchParams("");
+      setLoading(false);
       navigate("/");
     } catch (e) {
       console.log(e);
@@ -33,7 +32,7 @@ const GlobalState = ({ children }) => {
     }
   };
 
-  // console.log("Recipe list", recipeList);
+  console.log("Recipe list from context", recipeList);
   const handleAddFavouriteRecipeItem = (currentRecipeItem) => {
     const newList = [...favouriteList];
     const index = newList.findIndex((item) => item.id === currentRecipeItem.id);
@@ -72,6 +71,7 @@ const GlobalState = ({ children }) => {
         handleAddFavouriteRecipeItem,
         favouriteList,
         handleDeleteFavoutiteRecipeItem,
+        setLoading,
       }}
     >
       {children}
